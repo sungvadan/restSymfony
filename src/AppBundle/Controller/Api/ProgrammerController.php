@@ -23,7 +23,7 @@ class ProgrammerController extends BaseController
         $body = $request->getContent();
         $data = json_decode($body,true);
 
-        $programmer = new Programmer($data['nickName'], $data['avatarNumber']);
+        $programmer = new Programmer($data['nickname'], $data['avatarNumber']);
         $programmer->setTagLine($data['tagLine']);
         $programmer->setUser($this->findUserByUsername('weaverryan'));
 

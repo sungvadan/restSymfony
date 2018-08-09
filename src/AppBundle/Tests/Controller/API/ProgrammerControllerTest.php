@@ -1,16 +1,26 @@
 <?php
 namespace AppBundle\Tests\Controller\API;
 
+
+
 use AppBundle\Test\ApiTestCase;
 
 
 class ProgrammerControllerTest extends ApiTestCase
 {
+
+    protected function setUp(){
+        parent::setUp();
+
+        $this->createUser('weaverryan');
+
+    }
+
     public function testPOST()
     {
-        $nickName = 'ObjectOrienter' ;
+        $nickname = 'ObjectOrienter' ;
         $data = array(
-            'nickName' => $nickName,
+            'nickname' => $nickname,
             'avatarNumber' => 6,
             'tagLine' => 'a test dev'
         );
@@ -27,4 +37,42 @@ class ProgrammerControllerTest extends ApiTestCase
         $this->assertEquals('ObjectOrienter', $finishedData['nickname']);
 
     }
+
+
+    public function testGETProgrammer()
+    {
+        $this->createProgrammer([
+            'nickName' => 'UnitTester',
+            'avatarNumber' => 6,
+            'tagLine' => 'a test dev'
+        ]);
+
+        $response = $this->client->get('api/programmers/UnitTester');
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->asserter()->assertResponsePropertiesExist($response, ['nickname','avatarNumber','powerLevel','tagLine']);
+        $this->asserter()->assertResponsePropertyEquals($response,'nickname','UnitTester');
+    }
+
+
+
+
+    public function testGETProgrammersCollection()
+    {
+        $this->createProgrammer(array(
+            'nickname' => 'UnitTester',
+            'avatarNumber' => 3,
+        ));
+        $this->createProgrammer(array(
+            'nickname' => 'CowboyCoder',
+            'avatarNumber' => 5,
+        ));
+
+        $response = $this->client->get('/api/programmers');
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->asserter()->assertResponsePropertyIsArray($response,'programmers');
+        $this->asserter()->assertResponsePropertyCount($response,'programmers',2);
+        $this->asserter()->assertResponsePropertyEquals($response,'programmers[1].nickname','CowboyCoder');
+
+    }
+
 }
