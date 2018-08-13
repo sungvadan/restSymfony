@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eca9b7e2-9927-4642-ba54-d709e4841ef9" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Test/ApiTestCase.php" afterPath="$PROJECT_DIR$/src/AppBundle/Test/ApiTestCase.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" afterPath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -54,14 +53,24 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ProgrammerController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ProgrammerController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="587">
-              <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
+            <state relative-caret-position="808">
+              <caret line="155" column="1" lean-forward="true" selection-start-line="155" selection-start-column="1" selection-end-line="155" selection-end-column="1" />
               <folding>
                 <element signature="e#43#67#0#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FormInterface.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/FormInterface.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4692">
+              <caret line="283" column="23" lean-forward="true" selection-start-line="283" selection-start-column="23" selection-end-line="283" selection-end-column="23" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -128,23 +137,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config_test.yml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/config_test.yml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding>
-                <marker date="1534157943745" expanded="true" signature="270:330" ph="doctrine: &lt;1 key&gt;" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ProgrammerControllerTest.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ProgrammerControllerTest.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="774">
-              <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+            <state relative-caret-position="621">
+              <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -213,9 +210,9 @@
         <option value="$PROJECT_DIR$/app/phpunit.xml.dist" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ProgrammerType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Test/ApiTestCase.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Form/UpdateProgrammerType.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Form/UpdateProgrammerType.php" />
       </list>
     </option>
   </component>
@@ -601,12 +598,12 @@
       <workItem from="1533308770565" duration="3250000" />
       <workItem from="1533540830129" duration="18719000" />
       <workItem from="1533815221463" duration="8490000" />
-      <workItem from="1534153796195" duration="9920000" />
+      <workItem from="1534153796195" duration="11022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42844000" />
+    <option name="totallyTimeSpent" value="43946000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1096" extended-state="6" />
@@ -644,16 +641,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadFixtures.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#46#96#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/routing.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
@@ -1098,21 +1085,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php">
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="122" column="29" lean-forward="true" selection-start-line="122" selection-start-column="29" selection-end-line="122" selection-end-column="29" />
-          <folding>
-            <element signature="e#43#67#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="621">
+          <caret line="120" column="22" lean-forward="true" selection-start-line="120" selection-start-column="22" selection-end-line="120" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php">
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/symfony/src/Symfony/Component/Form/FormInterface.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="774">
-          <caret line="98" column="5" lean-forward="true" selection-start-line="98" selection-start-column="5" selection-end-line="98" selection-end-column="5" />
+        <state relative-caret-position="4692">
+          <caret line="283" column="23" lean-forward="true" selection-start-line="283" selection-start-column="23" selection-end-line="283" selection-end-column="23" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/Api/ProgrammerController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="808">
+          <caret line="155" column="1" lean-forward="true" selection-start-line="155" selection-start-column="1" selection-end-line="155" selection-end-column="1" />
+          <folding>
+            <element signature="e#43#67#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -87,7 +87,7 @@ class ProgrammerController extends BaseController
 
     /**
      * @Route("/api/programmers/{nickname}", name="api_programmers_update")
-     * @Method("PUT")
+     * @Method({"PUT","PATCH"})
      */
     public function updateAction($nickname, Request $request)
     {
@@ -115,12 +115,30 @@ class ProgrammerController extends BaseController
 
     }
 
+    /**
+     * @Route("/api/programmers/{nickname}", name="api_programmers_delete")
+     * @Method("DELETE")
+     */
+    public function deleteAction($nickname)
+    {
+        $programmer = $this->getDoctrine()
+            ->getRepository(Programmer::class)
+            ->findOneByNickname($nickname);
+        if($programmer){
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($programmer);
+            $em->flush();
+        }
+
+        return new Response(null, 204);
+    }
+
     private function processForm(Request $request, FormInterface $form)
     {
         $body = $request->getContent();
         $data = json_decode($body,true);
-
-        $form->submit($data);
+        $clearMissing = $request->getMethod() != 'PATCH';
+        $form->submit($data,$clearMissing);
     }
 
     private function serializeProgrammer(Programmer $programmer)
@@ -132,5 +150,7 @@ class ProgrammerController extends BaseController
             'tagLine' => $programmer->getTagLine()
         ];
     }
+
+
 
 }
