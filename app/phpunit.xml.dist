@@ -16,8 +16,8 @@
     </testsuites>
 
     <php>
-        <!--<server name="KERNEL_DIR" value="/path/to/your/app/" />-->
         <env name="TEST_BASE_URL" value="http://localhost:8000" />
+        <env name="environment" value="test" />
     </php>
 
 

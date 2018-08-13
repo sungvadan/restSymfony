@@ -8,6 +8,7 @@ use Doctrine\Common\DataFixtures\Purger\ORMPurger;
 use Doctrine\ORM\EntityManager;
 use Exception;
 use GuzzleHttp\Client;
+use GuzzleHttp\Event\BeforeEvent;
 use GuzzleHttp\Message\AbstractMessage;
 use GuzzleHttp\Message\ResponseInterface;
 use GuzzleHttp\Subscriber\History;
@@ -53,7 +54,16 @@ class ApiTestCase extends KernelTestCase
         self::$staticClient->getEmitter()
             ->attach(self::$history);
 
-        self::bootKernel();
+        self::$staticClient->getEmitter()
+            ->on('before', function(BeforeEvent $event) {
+                $path = $event->getRequest()->getPath();
+                if (strpos($path, '/api') === 0) {
+                    $event->getRequest()->setPath('/app_test.php'.$path);
+                }
+            });
+
+        $environment =  $baseUrl = getenv('environment');
+        self::bootKernel(array('environment' => $environment));
     }
 
     protected function setUp()
@@ -95,6 +105,16 @@ class ApiTestCase extends KernelTestCase
     {
         return self::$kernel->getContainer()
             ->get($id);
+    }
+
+    protected function getEnvironment()
+    {
+        return self::$kernel->getEnvironment();
+    }
+
+    protected function getParameter($id)
+    {
+        return self::$kernel->getContainer()->getParameter($id);
     }
 
     protected function printLastRequestUrl()
@@ -212,6 +232,7 @@ class ApiTestCase extends KernelTestCase
 
     protected function createUser($username, $plainPassword='')
     {
+        echo $this->getEnvironment();
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($username.'@foo.com');
