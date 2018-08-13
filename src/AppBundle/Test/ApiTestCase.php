@@ -232,7 +232,6 @@ class ApiTestCase extends KernelTestCase
 
     protected function createUser($username, $plainPassword='')
     {
-        echo $this->getEnvironment();
         $user = new User();
         $user->setUsername($username);
         $user->setEmail($username.'@foo.com');

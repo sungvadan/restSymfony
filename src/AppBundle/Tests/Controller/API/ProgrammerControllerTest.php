@@ -75,4 +75,26 @@ class ProgrammerControllerTest extends ApiTestCase
 
     }
 
+
+    public function testPUTProgrammer()
+    {
+        $this->createProgrammer([
+            'nickName' => 'CowboyCoder',
+            'avatarNumber' => 6,
+            'tagLine' => 'foo'
+        ]);
+
+        $data = array(
+            'nickname' => 'CowgirlCoder',
+            'avatarNumber' => 2,
+            'tagLine' => 'foo'
+        );
+
+        $response = $this->client->put('api/programmers/CowboyCoder',array(
+            'body' => json_encode($data)
+        ));
+        $this->assertEquals(200, $response->getStatusCode());
+        $this->asserter()->assertResponsePropertyEquals($response,'avatarNumber','2');
+        $this->asserter()->assertResponsePropertyEquals($response,'nickname','CowboyCoder');
+    }
 }

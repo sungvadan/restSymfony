@@ -4,9 +4,12 @@ namespace AppBundle\Controller\Api;
 use AppBundle\AppBundle;
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Programmer;
+use AppBundle\Form\ProgrammerType;
+use AppBundle\Form\UpdateProgrammerType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,12 +23,11 @@ class ProgrammerController extends BaseController
      */
     public function newAction(Request $request)
     {
-        $body = $request->getContent();
-        $data = json_decode($body,true);
-
-        $programmer = new Programmer($data['nickname'], $data['avatarNumber']);
-        $programmer->setTagLine($data['tagLine']);
+        $programmer = new Programmer();
         $programmer->setUser($this->findUserByUsername('weaverryan'));
+
+        $form = $this->createForm(new ProgrammerType() , $programmer);
+        $this->processForm($request, $form);
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($programmer);
@@ -81,6 +83,44 @@ class ProgrammerController extends BaseController
         $response = new JsonResponse($data);
 
         return $response;
+    }
+
+    /**
+     * @Route("/api/programmers/{nickname}", name="api_programmers_update")
+     * @Method("PUT")
+     */
+    public function updateAction($nickname, Request $request)
+    {
+        $programmer = $this->getDoctrine()
+            ->getRepository(Programmer::class)
+            ->findOneByNickname($nickname);
+        if(!$programmer){
+            throw $this->createNotFoundException('No programmer found for username '.$nickname);
+        }
+
+        $form = $this->createForm(new UpdateProgrammerType(), $programmer);
+
+        $this->processForm($request, $form);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($programmer);
+        $em->flush();
+
+
+        $data =  $this->serializeProgrammer($programmer);
+
+        $response = new JsonResponse($data,200);
+
+        return $response;
+
+    }
+
+    private function processForm(Request $request, FormInterface $form)
+    {
+        $body = $request->getContent();
+        $data = json_decode($body,true);
+
+        $form->submit($data);
     }
 
     private function serializeProgrammer(Programmer $programmer)
