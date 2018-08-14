@@ -1,6 +1,7 @@
 <?php
 namespace AppBundle\Controller\Api;
 
+use AppBundle\Api\ApiProblem;
 use AppBundle\AppBundle;
 use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Programmer;
@@ -29,6 +30,13 @@ class ProgrammerController extends BaseController
         $form = $this->createForm(new ProgrammerType() , $programmer);
         $this->processForm($request, $form);
 
+
+        if(!$form->isValid()){
+//            header("Content-Type: CLI");
+//            dump((string)$form->getErrors(true,false));die();
+            return $this->createValidationErrorResponse($form);
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($programmer);
         $em->flush();
@@ -36,9 +44,8 @@ class ProgrammerController extends BaseController
         $location = $this->generateUrl('api_programmers_show',[
            'nickname' => $programmer->getNickname()
         ]);
-        $data =  $this->serializeProgrammer($programmer);
 
-        $response = new JsonResponse($data,201);
+        $response = $this->createApiResponse($programmer,201 );
         $response->headers->set('Location',$location);
 
         return $response;
@@ -59,8 +66,7 @@ class ProgrammerController extends BaseController
 
         }
 
-        $data  = $this->serializeProgrammer($programmer);
-        $response = new JsonResponse($data);
+        $response = $this->createApiResponse($programmer);
         return $response;
     }
 
@@ -75,12 +81,8 @@ class ProgrammerController extends BaseController
             ->getRepository(Programmer::class)
             ->findAll();
 
-        $data = ['programmers' => []];
-        foreach ($programmers as $programmer){
-            $data['programmers'][] = $this->serializeProgrammer($programmer);
-        }
-
-        $response = new JsonResponse($data);
+        $data = ['programmers' => $programmers];
+        $response = $this->createApiResponse($data);
 
         return $response;
     }
@@ -102,14 +104,18 @@ class ProgrammerController extends BaseController
 
         $this->processForm($request, $form);
 
+        if(!$form->isValid()){
+//            header("Content-Type: CLI");
+//            dump((string)$form->getErrors(true,false));die();
+            return $this->createValidationErrorResponse($form);
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($programmer);
         $em->flush();
 
 
-        $data =  $this->serializeProgrammer($programmer);
-
-        $response = new JsonResponse($data,200);
+        $response = $this->createApiResponse($programmer);
 
         return $response;
 
@@ -141,16 +147,33 @@ class ProgrammerController extends BaseController
         $form->submit($data,$clearMissing);
     }
 
-    private function serializeProgrammer(Programmer $programmer)
+
+    private function getErrorsFromForm(FormInterface $form)
     {
-        return [
-            'nickname' => $programmer->getNickname(),
-            'avatarNumber' => $programmer->getAvatarNumber(),
-            'powerLevel' => $programmer->getPowerLevel(),
-            'tagLine' => $programmer->getTagLine()
-        ];
+        $errors = array();
+        foreach ($form->getErrors() as $error) {
+            $errors[] = $error->getMessage();
+        }
+        foreach ($form->all() as $childForm) {
+            if ($childForm instanceof FormInterface) {
+                if ($childErrors = $this->getErrorsFromForm($childForm)) {
+                    $errors[$childForm->getName()] = $childErrors;
+                }
+            }
+        }
+        return $errors;
     }
 
+    private function createValidationErrorResponse(FormInterface$form)
+    {
+        $errors = $this->getErrorsFromForm($form);
 
+        $apiProblem = new ApiProblem(400,'validation_error','There was a validation error');
+        $apiProblem->set('errors', $errors);
+
+        $response = new JsonResponse($apiProblem->toArray(),$apiProblem->getStatusCode());
+        $response->headers->set('Content-Type','application/problem+json');
+        return $response;
+    }
 
 }

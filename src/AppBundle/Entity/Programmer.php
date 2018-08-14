@@ -1,6 +1,8 @@
 <?php
 
 namespace AppBundle\Entity;
+use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
 
@@ -8,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Programmer
  *
  * @ORM\Table(name="battle_programmer")
+ * @Serializer\ExclusionPolicy("all")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProgrammerRepository")
  */
 class Programmer
@@ -23,28 +26,29 @@ class Programmer
 
     /**
      * @var string
-     *
+     * @Serializer\Expose()
      * @ORM\Column(name="nickname", type="string", length=100, unique=true)
+     * @Assert\NotBlank(message="Please enter a clever nickname")
      */
     private $nickname;
 
     /**
      * @var integer
-     *
+     * @Serializer\Expose()
      * @ORM\Column(name="avatarNumber", type="integer")
      */
     private $avatarNumber;
 
     /**
      * @var string
-     *
+     * @Serializer\Expose()
      * @ORM\Column(name="tagLine", type="string", length=255, nullable=true)
      */
     private $tagLine;
 
     /**
      * @var integer
-     *
+     * @Serializer\Expose()
      * @ORM\Column(name="powerLevel", type="integer")
      */
     private $powerLevel = 0;
