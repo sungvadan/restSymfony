@@ -18,6 +18,6 @@ services:
         arguments: ['@doctrine.orm.entity_manager']
     api_problem_subscriber:
         class: AppBundle\EventListener\ApiExceptionSubscriber
-        arguments: []
+        arguments: [%kernel.debug%]
         tags:
             - { name: kernel.event_subscriber }
