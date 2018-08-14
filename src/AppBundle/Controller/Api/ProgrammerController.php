@@ -14,6 +14,7 @@ use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class ProgrammerController extends BaseController
 {
@@ -34,7 +35,7 @@ class ProgrammerController extends BaseController
         if(!$form->isValid()){
 //            header("Content-Type: CLI");
 //            dump((string)$form->getErrors(true,false));die();
-            return $this->createValidationErrorResponse($form);
+            return $this->throwApoProblemValidationException($form);
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -107,7 +108,7 @@ class ProgrammerController extends BaseController
         if(!$form->isValid()){
 //            header("Content-Type: CLI");
 //            dump((string)$form->getErrors(true,false));die();
-            return $this->createValidationErrorResponse($form);
+            return $this->throwApoProblemValidationException($form);
         }
 
         $em = $this->getDoctrine()->getManager();
@@ -143,6 +144,13 @@ class ProgrammerController extends BaseController
     {
         $body = $request->getContent();
         $data = json_decode($body,true);
+        if( null === $data){
+            $apiProblem = new ApiProblem(
+                400,
+                ApiProblem::TYPE_INVALID_BODY_FORMAT
+            );
+            throw new ApiProblemException($apiProblem);
+        }
         $clearMissing = $request->getMethod() != 'PATCH';
         $form->submit($data,$clearMissing);
     }
@@ -164,16 +172,17 @@ class ProgrammerController extends BaseController
         return $errors;
     }
 
-    private function createValidationErrorResponse(FormInterface$form)
+    private function throwApoProblemValidationException(FormInterface$form)
     {
         $errors = $this->getErrorsFromForm($form);
 
-        $apiProblem = new ApiProblem(400,'validation_error','There was a validation error');
+        $apiProblem = new ApiProblem(
+            400,
+            ApiProblem::TYPE_VALIDATION_ERROR
+        );
         $apiProblem->set('errors', $errors);
 
-        $response = new JsonResponse($apiProblem->toArray(),$apiProblem->getStatusCode());
-        $response->headers->set('Content-Type','application/problem+json');
-        return $response;
+        throw new ApiProblemException($apiProblem);
     }
 
 }
