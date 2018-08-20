@@ -279,4 +279,8 @@ class ApiTestCase extends KernelTestCase
         }
         return $this->responseAsserter;
     }
+
+    protected function adjustUri($uri){
+        return '/app_test.php'.$uri;
+    }
 }

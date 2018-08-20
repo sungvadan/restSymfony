@@ -27,8 +27,13 @@ class ProgrammerRepository extends EntityRepository
     }
 
 
-    public function findAllQueryBuilder()
+    public function findAllQueryBuilder($filter = '')
     {
-        return $this->createQueryBuilder('p');
+        $qb = $this->createQueryBuilder('p');
+        if($filter){
+            $qb->andWhere('p.nickname like :filter or p.tagLine like :filter')
+                ->setParameter('filter','%'.$filter.'%');
+        }
+        return $qb;
     }
 }

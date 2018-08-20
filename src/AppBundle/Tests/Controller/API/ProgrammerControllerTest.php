@@ -50,6 +50,7 @@ class ProgrammerControllerTest extends ApiTestCase
         $this->assertEquals(200, $response->getStatusCode());
         $this->asserter()->assertResponsePropertiesExist($response, ['nickname','avatarNumber','powerLevel','tagLine']);
         $this->asserter()->assertResponsePropertyEquals($response,'nickname','UnitTester');
+        $this->asserter()->assertResponsePropertyEquals($response,'uri',$this->adjustUri('/api/programmers/UnitTester'));
     }
 
 
@@ -191,15 +192,21 @@ EOF;
     }
 
     //test pagination
-    public function testGETProgrammersCollectionPagination()
+    public function testGETProgrammersCollectionPaginated()
     {
+
+        $this->createProgrammer(array(
+                'nickname' => 'willNotMatch',
+                'avatarNumber' => 5,
+        ));
+
         for($i = 0; $i < 25; $i++){
             $this->createProgrammer(array(
                 'nickname' => 'Programmer'.$i,
                 'avatarNumber' => 3,
             ));
         }
-        $response = $this->client->get('/api/programmers');
+        $response = $this->client->get('/api/programmers?filter=Programmer');
         $this->assertEquals(200, $response->getStatusCode());
         $this->asserter()->assertResponsePropertyEquals(
             $response,
