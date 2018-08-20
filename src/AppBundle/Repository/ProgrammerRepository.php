@@ -25,4 +25,10 @@ class ProgrammerRepository extends EntityRepository
     {
         return $this->findOneBy(array('nickname' => $nickname));
     }
+
+
+    public function findAllQueryBuilder()
+    {
+        return $this->createQueryBuilder('p');
+    }
 }

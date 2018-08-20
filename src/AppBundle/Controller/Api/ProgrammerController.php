@@ -7,6 +7,9 @@ use AppBundle\Controller\BaseController;
 use AppBundle\Entity\Programmer;
 use AppBundle\Form\ProgrammerType;
 use AppBundle\Form\UpdateProgrammerType;
+use AppBundle\Pagination\PaginatedCollection;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+use Pagerfanta\Pagerfanta;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -73,17 +76,20 @@ class ProgrammerController extends BaseController
 
 
     /**
-     * @Route("/api/programmers")
+     * @Route("/api/programmers", name="api_programmers_collection")
      * @Method("GET")
      */
-    public function listAction()
+    public function listAction(Request $request)
     {
-        $programmers = $this->getDoctrine()
-            ->getRepository(Programmer::class)
-            ->findAll();
 
-        $data = ['programmers' => $programmers];
-        $response = $this->createApiResponse($data);
+
+        $qb = $this->getDoctrine()
+            ->getRepository(Programmer::class)
+            ->findAllQueryBuilder();
+        $paginatedCollection = $this->get('pagination_factory')
+                                        ->createCollection($qb, $request, 'api_programmers_collection');
+
+        $response = $this->createApiResponse($paginatedCollection);
 
         return $response;
     }
