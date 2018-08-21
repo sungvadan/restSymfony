@@ -5,6 +5,7 @@ use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Annotation\Link;
 
 /**
  * Programmer
@@ -12,6 +13,11 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="battle_programmer")
  * @Serializer\ExclusionPolicy("all")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ProgrammerRepository")
+ * @Link(
+ *     "self",
+ *     route = "api_programmers_show",
+ *     params = { "nickname": "object.getNickname()" }
+ * )
  */
 class Programmer
 {
