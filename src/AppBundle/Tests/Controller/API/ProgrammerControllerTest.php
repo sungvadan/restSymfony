@@ -51,8 +51,22 @@ class ProgrammerControllerTest extends ApiTestCase
         $this->asserter()->assertResponsePropertiesExist($response, ['nickname','avatarNumber','powerLevel','tagLine']);
         $this->asserter()->assertResponsePropertyEquals($response,'nickname','UnitTester');
         $this->asserter()->assertResponsePropertyEquals($response,'_links.self',$this->adjustUri('/api/programmers/UnitTester'));
+        $this->asserter()->assertResponsePropertyDoesNotExist($response,'user.username');
+
     }
 
+    public function testGETProgrammerDeep()
+    {
+        $this->createProgrammer([
+            'nickName' => 'UnitTester',
+            'avatarNumber' => 6,
+        ]);
+
+        $response = $this->client->get('api/programmers/UnitTester?deep=1');
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $this->asserter()->assertResponsePropertyExists($response,'user.username');
+    }
 
 
 

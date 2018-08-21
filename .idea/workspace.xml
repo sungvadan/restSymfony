@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" line="92" />
+    <bookmark url="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" line="106" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eca9b7e2-9927-4642-ba54-d709e4841ef9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/services.yml" afterPath="$PROJECT_DIR$/app/config/services.yml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/EventListener/LinkSerialisationSubscriber.php" afterPath="$PROJECT_DIR$/src/AppBundle/EventListener/LinkSerialisationSubscriber.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" afterPath="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -68,16 +67,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProgrammerRepository.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Repository/ProgrammerRepository.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="16" column="53" lean-forward="false" selection-start-line="16" selection-start-column="53" selection-end-line="16" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="services.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/config/services.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -91,9 +80,31 @@
       <file leaf-file-name="Programmer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
+            <state relative-caret-position="442">
+              <caret line="57" column="53" lean-forward="false" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="121" column="37" lean-forward="false" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="7" lean-forward="false" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+              <folding>
+                <element signature="e#36#68#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -111,18 +122,8 @@
       <file leaf-file-name="ProgrammerControllerTest.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="52" column="68" lean-forward="false" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ApiTestCase.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AppBundle/Test/ApiTestCase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="253" column="17" lean-forward="false" selection-start-line="253" selection-start-column="17" selection-end-line="253" selection-end-column="17" />
+            <state relative-caret-position="357">
+              <caret line="53" column="62" lean-forward="false" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -194,8 +195,8 @@
       <find>programmers</find>
       <find>$qb</find>
       <find>$object</find>
-      <find>getNickname</find>
       <find>resolverParams</find>
+      <find>getNickname</find>
     </findStrings>
     <replaceStrings>
       <replace>serialize</replace>
@@ -223,7 +224,6 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Form/UpdateProgrammerType.php" />
         <option value="$PROJECT_DIR$/composer.json" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Form/ProgrammerType.php" />
         <option value="$PROJECT_DIR$/resources/ApiProblem.php" />
         <option value="$PROJECT_DIR$/app/config/routing.yml" />
@@ -238,8 +238,10 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Annotation/Link.php" />
         <option value="$PROJECT_DIR$/app/config/services.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/EventListener/ApiExceptionSubscriber.php" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/EventListener/LinkSerialisationSubscriber.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/User.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php" />
         <option value="$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php" />
       </list>
     </option>
@@ -527,12 +529,12 @@
       <workItem from="1534153796195" duration="27212000" />
       <workItem from="1534492630641" duration="3089000" />
       <workItem from="1534513606397" duration="4122000" />
-      <workItem from="1534752817528" duration="10486000" />
+      <workItem from="1534752817528" duration="11511000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77833000" />
+    <option name="totallyTimeSpent" value="78858000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -565,23 +567,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="3" />
+      <option name="time" value="4" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/30bff242/b45c7747-0f7a-417b-b5bd-5b9c242bf7e2/battle_programmer">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/30bff242/b45c7747-0f7a-417b-b5bd-5b9c242bf7e2/battle_programmer">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -839,13 +829,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="666">
-          <caret line="126" column="48" lean-forward="false" selection-start-line="126" selection-start-column="48" selection-end-line="126" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/ApiProblem.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -984,14 +967,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="26" column="45" lean-forward="false" selection-start-line="26" selection-start-column="45" selection-end-line="26" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/EventListener/LinkSerialisationSubscriber.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="280">
@@ -1012,10 +987,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="7" lean-forward="false" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+          <folding>
+            <element signature="e#36#68#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Programmer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="57" column="53" lean-forward="false" selection-start-line="57" selection-start-column="53" selection-end-line="57" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/BaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="121" column="37" lean-forward="false" selection-start-line="121" selection-start-column="37" selection-end-line="121" selection-end-column="37" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Tests/Controller/API/ProgrammerControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="52" column="68" lean-forward="false" selection-start-line="52" selection-start-column="68" selection-end-line="52" selection-end-column="68" />
+        <state relative-caret-position="357">
+          <caret line="53" column="62" lean-forward="false" selection-start-line="53" selection-start-column="62" selection-end-line="53" selection-end-column="62" />
           <folding />
         </state>
       </provider>
